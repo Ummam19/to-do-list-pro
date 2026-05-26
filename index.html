@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Pro</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; }
+        .input-group { position: relative; margin-bottom: 20px; }
+        
+        /* Style untuk validasi input */
+        input[type="text"].error-border { border: 2px solid #ff4d4d; outline: none; }
+        .error-message { color: #ff4d4d; font-size: 12px; margin-top: 4px; display: none; }
+        
+        /* Style Filter Buttons */
+        .filter-group { margin-bottom: 15px; display: flex; gap: 10px; }
+        .filter-btn { padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; background: #fff; border-radius: 4px; }
+        .filter-btn.active { background: #007bff; color: white; border-color: #007bff; }
+        
+        /* Style Todo List */
+        ul { list-style: none; padding: 0; }
+        li { display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px solid #eee; }
+        .completed { text-decoration: line-through; color: #888; }
+        
+        .todo-item-left { display: flex; align-items: center; gap: 10px; flex-grow: 1; }
+        .edit-input { width: 80%; padding: 4px; }
+        .btn-group { display: flex; gap: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>Todo List Pro</h2>
+
+    <div class="input-group">
+        <input type="text" id="todoInput" placeholder="Tambah tugas baru...">
+        <button id="addBtn">Tambah</button>
+        <div id="errorTxt" class="error-message">Input tidak boleh kosong!</div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+    </div>
+
+    <ul id="todoList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
