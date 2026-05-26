@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <h2>Todo List Pro</h2>
+
+        <div class="input-group">
+            <div class="input-row">
+                <input type="text" id="todoInput" placeholder="Tambah tugas baru...">
+                <button id="addBtn">Tambah</button>
+            </div>
+            <div id="errorTxt" class="error-message">Input tidak boleh kosong!</div>
+        </div>
+
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <ul id="todoList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

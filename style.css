@@ -1,0 +1,250 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Utama */
+.app-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   FITUR 1: INPUT COMPONENT & VALIDATION
+   ========================================================================== */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+#todoInput {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#todoInput:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* Style Khusus Validasi Error */
+#todoInput.error-border {
+    border-color: #dc3545;
+    background-color: #fffafb;
+}
+
+#todoInput.error-border:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 6px;
+    position: absolute;
+    display: none; /* Dikontrol oleh JS */
+}
+
+/* Global Button Styles */
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#addBtn {
+    background-color: #007bff;
+    color: white;
+}
+
+#addBtn:hover {
+    background-color: #0056b3;
+}
+
+/* ==========================================================================
+   FITUR 2: FILTER BUTTONS GROUP
+   ========================================================================== */
+.filter-group {
+    display: flex;
+    background: #f0f2f5;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 2px;
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 8px 0;
+    font-size: 14px;
+    background: transparent;
+    color: #65676b;
+    border-radius: 8px;
+}
+
+.filter-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* State Filter Aktif */
+.filter-btn.active {
+    background: #ffffff;
+    color: #007bff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   LIST ITEMS & FITUR 3 (EDIT MODE)
+   ========================================================================== */
+#todoList {
+    list-style: none;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Kustomisasi Scrollbar halus untuk daftar panjang */
+#todoList::-webkit-scrollbar {
+    width: 6px;
+}
+#todoList::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #edf2f7;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.todo-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+/* Checkbox Kustom Skala Kecil */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #007bff;
+}
+
+li span {
+    font-size: 15px;
+    color: #2d3748;
+    word-break: break-all;
+    transition: all 0.3s ease;
+}
+
+/* Core core dicoret saat selesai */
+li span.completed {
+    text-decoration: line-through;
+    color: #a0aec0;
+}
+
+/* Kontrol Aksi Button di dalam List */
+.btn-group {
+    display: flex;
+    gap: 6px;
+    margin-left: 10px;
+}
+
+.btn-group button {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+/* Tombol Edit & Simpan */
+.btn-group button:nth-child(1) {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+.btn-group button:nth-child(1):hover:not(:disabled) {
+    background-color: #bbdefb;
+}
+
+/* Tombol Hapus & Batal */
+.btn-group button:nth-child(2) {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+.btn-group button:nth-child(2):hover {
+    background-color: #ffcdd2;
+}
+
+/* Disabled state jika tugas sudah selesai */
+.btn-group button:disabled {
+    background-color: #eaedf0;
+    color: #a0aec0;
+    cursor: not-allowed;
+}
+
+/* Style Input saat Mode Elegan Aktif */
+.edit-input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+}
